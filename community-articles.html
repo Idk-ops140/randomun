@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Community Articles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Community Articles</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <textarea id="articleInput" placeholder="Write your article here..."></textarea>
+        <button id="submitArticle">Submit</button>
+        <h2>Articles:</h2>
+        <div id="articlesList"></div>
+        <script>
+            const articlesContainer = document.getElementById("articlesList");
+            document.getElementById("submitArticle").onclick = function() {
+                const article = document.getElementById("articleInput").value;
+                if (article.trim() !== "") {
+                    const articleElement = document.createElement("div");
+                    articleElement.textContent = article;
+                    articlesContainer.appendChild(articleElement);
+                    document.getElementById("articleInput").value = ''; // Clear input
+                }
+            };
+        </script>
+    </main>
+</body>
+</html>
