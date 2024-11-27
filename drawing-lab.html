@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrawingLab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>DrawingLab</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <canvas id="drawingCanvas"></canvas>
+        <script>
+            const canvas = document.getElementById('drawingCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let drawing = false;
+
+            function startPosition(e) {
+                drawing = true;
+                draw(e);
+            }
+            function endPosition() {
+                drawing = false;
+                ctx.beginPath(); // Reset the path
+            }
+            function draw(e) {
+                if (!drawing) return;
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.strokeStyle = 'black';
+                ctx.lineTo(e.clientX, e.clientY);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(e.clientX, e.clientY);
+            }
+
+            canvas.addEventListener('mousedown', startPosition);
+            canvas.addEventListener('mouseup', endPosition);
+            canvas.addEventListener('mousemove', draw);
+        </script>
+    </main>
+</body>
+</html>
