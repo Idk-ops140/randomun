@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sky Viewer</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <canvas id="skyCanvas"></canvas>
+        <script>
+            // Simple sky viewer simulation
+            const canvas = document.getElementById('skyCanvas');
+            const context = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            function drawSky() {
+                const now = new Date();
+                const hour = now.getHours();
+                const color = hour >= 6 && hour < 18 ? 'skyblue' : 'darkblue';
+                context.fillStyle = color;
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                context.fillStyle = 'white';
+                context.font = '30px Arial';
+                context.fillText(`Time: ${now.toLocaleTimeString()}`, 20, 50);
+            }
+            drawSky();
+        </script>
+    </main>
+</body>
+</html>
