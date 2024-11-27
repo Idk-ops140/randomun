@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Internet Speed</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Your Internet Speed</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <button id="checkSpeedBtn">Check Internet Speed</button>
+        <div id="speedResult"></div>
+        <script>
+            function displaySpeed(speed) {
+                document.getElementById('speedResult').innerText = `Your speed is: ${speed} Mbps`;
+            }
+
+            document.getElementById('checkSpeedBtn').onclick = function() {
+                // Simulating internet speed check
+                const fakeSpeed = Math.floor(Math.random() * 100); // Generate a fake speed
+                displaySpeed(fakeSpeed);
+            };
+        </script>
+    </main>
+</body>
+</html>
